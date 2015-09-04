@@ -159,12 +159,12 @@ class OrderOpcControllerCore extends ParentOrderController
                                 $is_adv_api = Tools::getValue('isAdvApi');
 
                                 if ($is_adv_api) {
-                                    $tpl = 'order-address-advanced.tpl';
+                                    $tpl = 'partials/order-address-advanced.tpl';
                                     $this->context->smarty->assign(
                                         array('products' => $this->context->cart->getProducts())
                                     );
                                 } else {
-                                    $tpl = 'order-address.tpl';
+                                    $tpl = 'partials/order-address.tpl';
                                 }
 
                                 $return = array_merge(array(
