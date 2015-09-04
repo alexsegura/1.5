@@ -252,7 +252,7 @@ class ContactControllerCore extends FrontController
             'message' => html_entity_decode(Tools::getValue('message'))
         ));
 
-        $this->setTemplate(_PS_THEME_DIR_.'contact-form.tpl');
+        $this->setTemplate('contact-form.tpl');
     }
 
     /**

@@ -107,6 +107,6 @@ class PasswordControllerCore extends FrontController
     public function initContent()
     {
         parent::initContent();
-        $this->setTemplate(_PS_THEME_DIR_.'password.tpl');
+        $this->setTemplate('password.tpl');
     }
 }

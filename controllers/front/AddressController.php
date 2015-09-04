@@ -284,7 +284,7 @@ class AddressControllerCore extends FrontController
             unset($this->context->cookie->account_created);
         }
 
-        $this->setTemplate(_PS_THEME_DIR_.'address.tpl');
+        $this->setTemplate('address.tpl');
     }
 
     /**

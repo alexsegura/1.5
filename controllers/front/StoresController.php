@@ -154,7 +154,7 @@ class StoresControllerCore extends FrontController
             }
             $smarty->assign('days_datas', $days_datas);
             $smarty->assign('id_country', $store['id_country']);
-            return $this->context->smarty->fetch(_PS_THEME_DIR_.'store_infos.tpl');
+            return $this->context->smarty->fetch('partials/store_infos.tpl');
         }
         return false;
     }
@@ -276,7 +276,7 @@ class StoresControllerCore extends FrontController
             'logo_store' => Configuration::get('PS_STORES_ICON')
         ));
 
-        $this->setTemplate(_PS_THEME_DIR_.'stores.tpl');
+        $this->setTemplate('stores.tpl');
     }
 
     public function setMedia()

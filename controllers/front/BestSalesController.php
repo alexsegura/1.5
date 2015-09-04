@@ -52,7 +52,7 @@ class BestSalesControllerCore extends FrontController
                 'comparator_max_item' => Configuration::get('PS_COMPARATOR_MAX_ITEM')
             ));
 
-            $this->setTemplate(_PS_THEME_DIR_.'best-sales.tpl');
+            $this->setTemplate('best-sales.tpl');
         } else {
             Tools::redirect('index.php?controller=404');
         }

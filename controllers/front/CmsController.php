@@ -136,6 +136,6 @@ class CmsControllerCore extends FrontController
             ));
         }
 
-        $this->setTemplate(_PS_THEME_DIR_.'cms.tpl');
+        $this->setTemplate('cms.tpl');
     }
 }

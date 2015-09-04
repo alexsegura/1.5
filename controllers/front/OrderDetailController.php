@@ -230,7 +230,7 @@ class OrderDetailControllerCore extends FrontController
             unset($order);
         }
 
-        $this->setTemplate(_PS_THEME_DIR_.'order-detail.tpl');
+        $this->setTemplate('order-detail.tpl');
     }
 
     public function setMedia()

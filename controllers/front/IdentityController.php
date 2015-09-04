@@ -158,7 +158,7 @@ class IdentityControllerCore extends FrontController
 
         $this->context->smarty->assign('field_required', $this->context->customer->validateFieldsRequiredDatabase());
 
-        $this->setTemplate(_PS_THEME_DIR_.'identity.tpl');
+        $this->setTemplate('identity.tpl');
     }
 
     public function setMedia()

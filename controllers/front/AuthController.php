@@ -149,7 +149,7 @@ class AuthControllerCore extends FrontController
         ));
 
         // Just set $this->template value here in case it's used by Ajax
-        $this->setTemplate(_PS_THEME_DIR_.'authentication.tpl');
+        $this->setTemplate('authentication.tpl');
 
         if ($this->ajax) {
             // Call a hook to display more information on form

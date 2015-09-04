@@ -68,6 +68,6 @@ class HistoryControllerCore extends FrontController
             'slowValidation' => Tools::isSubmit('slowvalidation')
         ));
 
-        $this->setTemplate(_PS_THEME_DIR_.'history.tpl');
+        $this->setTemplate('history.tpl');
     }
 }

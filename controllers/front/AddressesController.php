@@ -104,6 +104,6 @@ class AddressesControllerCore extends FrontController
             'addresses' => $addresses, // retro compat themes 1.5ibility Theme < 1.4.1
         ));
 
-        $this->setTemplate(_PS_THEME_DIR_.'addresses.tpl');
+        $this->setTemplate('addresses.tpl');
     }
 }

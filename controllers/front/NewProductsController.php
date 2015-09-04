@@ -70,6 +70,6 @@ class NewProductsControllerCore extends FrontController
             'comparator_max_item' => Configuration::get('PS_COMPARATOR_MAX_ITEM')
         ));
 
-        $this->setTemplate(_PS_THEME_DIR_.'new-products.tpl');
+        $this->setTemplate('new-products.tpl');
     }
 }

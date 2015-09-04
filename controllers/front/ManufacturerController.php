@@ -78,10 +78,10 @@ class ManufacturerControllerCore extends FrontController
         if (Validate::isLoadedObject($this->manufacturer) && $this->manufacturer->active && $this->manufacturer->isAssociatedToShop()) {
             $this->productSort();
             $this->assignOne();
-            $this->setTemplate(_PS_THEME_DIR_.'manufacturer.tpl');
+            $this->setTemplate('manufacturer.tpl');
         } else {
             $this->assignAll();
-            $this->setTemplate(_PS_THEME_DIR_.'manufacturer-list.tpl');
+            $this->setTemplate('manufacturer-list.tpl');
         }
     }
 

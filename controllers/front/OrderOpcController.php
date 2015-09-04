@@ -168,7 +168,7 @@ class OrderOpcControllerCore extends ParentOrderController
                                 }
 
                                 $return = array_merge(array(
-                                    'order_opc_adress' => $this->context->smarty->fetch(_PS_THEME_DIR_.$tpl),
+                                    'order_opc_adress' => $this->context->smarty->fetch($tpl),
                                     'block_user_info' => (isset($block_user_info) ? $block_user_info->hookDisplayTop(array()) : ''),
                                     'block_user_info_nav' => (isset($block_user_info) ? $block_user_info->hookDisplayNav(array()) : ''),
                                     'formatedAddressFieldsValuesList' => $formated_address_fields_values_list,
@@ -286,7 +286,7 @@ class OrderOpcControllerCore extends ParentOrderController
                             } else {
                                 $this->context->smarty->assign('address_list', array());
                             }
-                            $this->setTemplate(_PS_THEME_DIR_.'order-address-multishipping-products.tpl');
+                            $this->setTemplate('order-address-multishipping-products.tpl');
                             $this->display();
                             $this->ajaxDie();
                             break;
@@ -299,7 +299,7 @@ class OrderOpcControllerCore extends ParentOrderController
                                 $this->context->smarty->assign('address_list', array());
                             }
                             $this->context->smarty->assign('opc', true);
-                            $this->setTemplate(_PS_THEME_DIR_.'shopping-cart.tpl');
+                            $this->setTemplate('shopping-cart.tpl');
                             $this->display();
                             $this->ajaxDie();
                             break;
@@ -428,9 +428,9 @@ class OrderOpcControllerCore extends ParentOrderController
 
         if ((bool)Configuration::get('PS_ADVANCED_PAYMENT_API')) {
             $this->addJS(_THEME_JS_DIR_ . 'advanced-payment-api.js');
-            $this->setTemplate(_PS_THEME_DIR_ . 'order-opc-advanced.tpl');
+            $this->setTemplate('order-opc-advanced.tpl');
         } else {
-            $this->setTemplate(_PS_THEME_DIR_.'order-opc.tpl');
+            $this->setTemplate('order-opc.tpl');
         }
     }
 
@@ -677,7 +677,7 @@ class OrderOpcControllerCore extends ParentOrderController
                     'delivery_option_list' => $this->context->cart->getDeliveryOptionList(),
                     'delivery_option' => $this->context->cart->getDeliveryOption(null, true)
                 )),
-                'carrier_block' => $this->context->smarty->fetch(_PS_THEME_DIR_.'order-carrier.tpl')
+                'carrier_block' => $this->context->smarty->fetch('order-carrier.tpl')
             );
 
             Cart::addExtraCarriers($result);
@@ -687,7 +687,7 @@ class OrderOpcControllerCore extends ParentOrderController
             return array(
                 'hasError' => true,
                 'errors' => $this->errors,
-                'carrier_block' => $this->context->smarty->fetch(_PS_THEME_DIR_.'order-carrier.tpl')
+                'carrier_block' => $this->context->smarty->fetch('order-carrier.tpl')
             );
         }
     }

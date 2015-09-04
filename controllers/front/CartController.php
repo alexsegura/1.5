@@ -345,7 +345,7 @@ class CartControllerCore extends FrontController
      */
     public function initContent()
     {
-        $this->setTemplate(_PS_THEME_DIR_.'errors.tpl');
+        $this->setTemplate('errors.tpl');
         if (!$this->ajax) {
             parent::initContent();
         }

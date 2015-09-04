@@ -122,7 +122,7 @@ class GuestTrackingControllerCore extends FrontController
             'action' => $this->context->link->getPageLink('guest-tracking.php', true),
             'errors' => $this->errors,
         ));
-        $this->setTemplate(_PS_THEME_DIR_.'guest-tracking.tpl');
+        $this->setTemplate('guest-tracking.tpl');
     }
 
     /**
