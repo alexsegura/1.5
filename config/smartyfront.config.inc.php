@@ -25,9 +25,14 @@
  */
 
 global $smarty;
-$smarty->setTemplateDir(array(
+
+$templateDir = array(
     _PS_THEME_DIR_.'templates',
-));
+);
+if (Context::getContext()->isMobile()) {
+    array_unshift($templateDir, _PS_THEME_DIR_.'templates/mobile');
+}
+$smarty->setTemplateDir($templateDir);
 
 if (Configuration::get('PS_HTML_THEME_COMPRESSION')) {
     $smarty->registerFilter('output', 'smartyMinifyHTML');
