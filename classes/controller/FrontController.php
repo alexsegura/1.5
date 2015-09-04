@@ -1449,20 +1449,17 @@ class FrontControllerCore extends Controller
         $entity = $this->php_self;
         $id_item = (int)Tools::getValue('id_'.$entity);
 
-        $layout_dir = $this->getThemeDir();
-        $layout_override_dir  = $this->getOverrideThemeDir();
-
         $layout = false;
         if ($entity) {
-            if ($id_item > 0 && file_exists($layout_override_dir.'layout-'.$entity.'-'.$id_item.'.tpl')) {
-                $layout = basename($layout_override_dir).'/layout-'.$entity.'-'.$id_item.'.tpl';
-            } elseif (file_exists($layout_override_dir.'layout-'.$entity.'.tpl')) {
-                $layout = basename($layout_override_dir).'/layout-'.$entity.'.tpl';
+            if ($id_item > 0 && $this->context->smarty->templateExists('layouts/'.$entity.'-'.$id_item.'.tpl')) {
+                $layout = 'layouts/'.$entity.'-'.$id_item.'.tpl';
+            } elseif ($this->context->smarty->templateExists('layouts/'.$entity.'.tpl')) {
+                $layout = 'layouts/'.$entity.'.tpl';
             }
         }
 
-        if (!$layout && file_exists($layout_dir.'layout.tpl')) {
-            $layout = 'layout.tpl';
+        if (!$layout && $this->context->smarty->templateExists('layouts/default.tpl')) {
+            $layout = 'layouts/default.tpl';
         }
 
         return $layout;
