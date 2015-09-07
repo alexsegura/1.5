@@ -29,7 +29,7 @@
 	<span class="navigation-pipe">{$navigationPipe}</span>
 	<span class="navigation_page">{l s='Order history'}</span>
 {/capture}
-{include file="$tpl_dir./errors.tpl"}
+{include file="partials/errors.tpl"}
 <h1 class="page-heading bottom-indent">{l s='Order history'}</h1>
 <p class="info-title">{l s='Here are the orders you\'ve placed since your account was created.'}</p>
 {if $slowValidation}

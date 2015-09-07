@@ -37,26 +37,26 @@
 	{if $productNumber}
 		<!-- Shopping Cart -->
 
-		{include file="$tpl_dir./shopping-cart.tpl"}
+		{include file="partials/shopping-cart.tpl"}
 		<!-- End Shopping Cart -->
 		{if $is_logged AND !$is_guest}
-			{include file="$tpl_dir./order-address.tpl"}
+			{include file="partials/order-address.tpl"}
 		{else}
 			<!-- Create account / Guest account / Login block -->
-			{include file="$tpl_dir./order-opc-new-account.tpl"}
+			{include file="partials/order-opc-new-account.tpl"}
 			<!-- END Create account / Guest account / Login block -->
 		{/if}
 		<!-- Carrier -->
-		{include file="$tpl_dir./order-carrier.tpl"}
+		{include file="partials/order-carrier.tpl"}
 		<!-- END Carrier -->
 	
 		<!-- Payment -->
-		{include file="$tpl_dir./order-payment.tpl"}
+		{include file="partials/order-payment.tpl"}
 		<!-- END Payment -->
 	{else}
 		{capture name=path}{l s='Your shopping cart'}{/capture}
 		<h2 class="page-heading">{l s='Your shopping cart'}</h2>
-		{include file="$tpl_dir./errors.tpl"}
+		{include file="partials/errors.tpl"}
 		<p class="alert alert-warning">{l s='Your shopping cart is empty.'}</p>
 	{/if}
 {strip}

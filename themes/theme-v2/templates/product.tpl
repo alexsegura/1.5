@@ -1,28 +1,7 @@
-{*
-* 2007-2015 PrestaShop
-*
-* NOTICE OF LICENSE
-*
-* This source file is subject to the Academic Free License (AFL 3.0)
-* that is bundled with this package in the file LICENSE.txt.
-* It is also available through the world-wide-web at this URL:
-* http://opensource.org/licenses/afl-3.0.php
-* If you did not receive a copy of the license and are unable to
-* obtain it through the world-wide-web, please send an email
-* to license@prestashop.com so we can send you a copy immediately.
-*
-* DISCLAIMER
-*
-* Do not edit or add to this file if you wish to upgrade PrestaShop to newer
-* versions in the future. If you wish to customize PrestaShop for your
-* needs please refer to http://www.prestashop.com for more information.
-*
-* @author    PrestaShop SA <contact@prestashop.com>
-* @copyright 2007-2015 PrestaShop SA
-* @license   http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
-* International Registered Trademark & Property of PrestaShop SA
-*}
-{include file="$tpl_dir./errors.tpl"}
+{extends "{$layout}"}
+
+{block "content"}
+{include file="partials/errors.tpl"}
 {if $errors|@count == 0}
 	{if !isset($priceDisplayPrecision)}
 		{assign var='priceDisplayPrecision' value=2}
@@ -489,7 +468,7 @@
 		{if isset($packItems) && $packItems|@count > 0}
 		<section id="blockpack">
 			<h3 class="page-product-heading">{l s='Pack content'}</h3>
-			{include file="$tpl_dir./product-list.tpl" products=$packItems}
+			{include file="product-list.tpl" products=$packItems}
 		</section>
 		{/if}
 		<!--HOOK_PRODUCT_TAB -->
@@ -766,3 +745,4 @@
 {addJsDefL name='product_fileButtonHtml'}{l s='Choose File' js=1}{/addJsDefL}
 {/strip}
 {/if}
+{/block}

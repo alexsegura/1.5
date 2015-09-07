@@ -28,9 +28,9 @@
 	{capture name=path}{l s='Addresses'}{/capture}
 	{assign var="back_order_page" value="order.php"}
 	<h1 class="page-heading">{l s='Addresses'}</h1>
-	{include file="$tpl_dir./order-steps.tpl"}
-	{include file="$tpl_dir./errors.tpl"}
-	{include file="$tpl_dir./order-address-multishipping-products.tpl"}
+	{include file="partials/order-steps.tpl"}
+	{include file="partials/errors.tpl"}
+	{include file="partials/order-address-multishipping-products.tpl"}
 		<form action="{$link->getPageLink('order', true, NULL, 'multi-shipping=1')|escape:'html':'UTF-8'}" method="post">
 {else}
 	{assign var="back_order_page" value="order-opc.php"}

@@ -39,7 +39,7 @@
         {l s='Your personal information'}
     </h1>
 
-    {include file="$tpl_dir./errors.tpl"}
+    {include file="partials/errors.tpl"}
 
     {if isset($confirmation) && $confirmation}
         <p class="alert alert-success">

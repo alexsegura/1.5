@@ -197,7 +197,7 @@
                         {assign var='noDeleteButton' value=1}
 
                         {* Display the product line *}
-                        {include file="$tpl_dir./shopping-cart-product-line.tpl"}
+                        {include file="partials/shopping-cart-product-line.tpl"}
 
                         {* Then the customized datas ones*}
                         {if isset($customizedDatas.$productId.$productAttributeId)}
@@ -239,7 +239,7 @@
                                 {assign var='quantityDisplayed' value=$quantityDisplayed+$customization.quantity}
                             {/foreach}
                             {* If it exists also some uncustomized products *}
-                            {if $product.quantity-$quantityDisplayed > 0}{include file="$tpl_dir./shopping-cart-product-line.tpl"}{/if}
+                            {if $product.quantity-$quantityDisplayed > 0}{include file="partials/shopping-cart-product-line.tpl"}{/if}
                         {/if}
                     {/foreach}
                     {assign var='last_was_odd' value=$product@iteration%2}
@@ -251,7 +251,7 @@
                         {assign var='ignoreProductLast' value=isset($customizedDatas.$productId.$productAttributeId)}
                         {assign var='cannotModify' value=1}
                         {* Display the gift product line *}
-                        {include file="./shopping-cart-product-line.tpl" productLast=$product@last productFirst=$product@first}
+                        {include file="partials/shopping-cart-product-line.tpl" productLast=$product@last productFirst=$product@first}
                     {/foreach}
                     </tbody>
 

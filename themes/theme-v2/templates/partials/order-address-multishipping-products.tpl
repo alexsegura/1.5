@@ -43,7 +43,7 @@
 			{assign var='quantityDisplayed' value=0}
 			{assign var='odd' value=$product@iteration%2}
 			{* Display the product line *}
-			{include file="$tpl_dir./order-address-product-line.tpl" productLast=$product@last productFirst=$product@first}
+			{include file="partials/order-address-product-line.tpl" productLast=$product@last productFirst=$product@first}
 		{/foreach}
 		</tbody>
 	</table>

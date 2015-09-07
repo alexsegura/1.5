@@ -22,7 +22,7 @@
 * @license   http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
 * International Registered Trademark & Property of PrestaShop SA
 *}
-{include file="./errors.tpl"}
+{include file="partials/errors.tpl"}
 {if isset($orderRet)}
 	<div class="box">
 		<h2 class="page-subheading">{l s='RE#'}{$orderRet->id|string_format:"%06d"} {l s='on'} {dateFormat date=$order->date_add full=0}</h2>

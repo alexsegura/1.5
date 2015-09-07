@@ -28,9 +28,9 @@
 <h1 class="page-heading">{l s='Order confirmation'}</h1>
 
 {assign var='current_step' value='payment'}
-{include file="$tpl_dir./order-steps.tpl"}
+{include file="partials/order-steps.tpl"}
 
-{include file="$tpl_dir./errors.tpl"}
+{include file="partials/errors.tpl"}
 
 {$HOOK_ORDER_CONFIRMATION}
 {$HOOK_PAYMENT_RETURN}

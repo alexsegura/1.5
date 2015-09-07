@@ -45,7 +45,7 @@ class="page-heading {if !isset($instant_search) || (isset($instant_search) && !$
     {/if}
 </h1>
 
-{include file="$tpl_dir./errors.tpl"}
+{include file="partials/errors.tpl"}
 {if !$nbProducts}
 	<p class="alert alert-warning">
 		{if isset($search_query) && $search_query}
@@ -64,24 +64,24 @@ class="page-heading {if !isset($instant_search) || (isset($instant_search) && !$
     {/if}
     <div class="content_sortPagiBar">
         <div class="sortPagiBar clearfix {if isset($instant_search) && $instant_search} instant_search{/if}">
-            {include file="$tpl_dir./product-sort.tpl"}
+            {include file="partials/product-sort.tpl"}
             {if !isset($instant_search) || (isset($instant_search) && !$instant_search)}
-                {include file="./nbr-product-page.tpl"}
+                {include file="partials/nbr-product-page.tpl"}
             {/if}
         </div>
     	<div class="top-pagination-content clearfix">
-            {include file="./product-compare.tpl"}
+            {include file="partials/product-compare.tpl"}
             {if !isset($instant_search) || (isset($instant_search) && !$instant_search)}
-                {include file="$tpl_dir./pagination.tpl" no_follow=1}
+                {include file="partials/pagination.tpl" no_follow=1}
             {/if}
         </div>
 	</div>
-	{include file="$tpl_dir./product-list.tpl" products=$search_products}
+	{include file="product-list.tpl" products=$search_products}
     <div class="content_sortPagiBar">
     	<div class="bottom-pagination-content clearfix">
-        	{include file="./product-compare.tpl"}
+        	{include file="partials/product-compare.tpl"}
         	{if !isset($instant_search) || (isset($instant_search) && !$instant_search)}
-                {include file="$tpl_dir./pagination.tpl" paginationId='bottom' no_follow=1}
+                {include file="partials/pagination.tpl" paginationId='bottom' no_follow=1}
             {/if}
         </div>
     </div>

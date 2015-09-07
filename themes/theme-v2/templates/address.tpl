@@ -37,7 +37,7 @@
 			{l s='To add a new address, please fill out the form below.'}
 		{/if}
 	</p>
-	{include file="$tpl_dir./errors.tpl"}
+	{include file="partials/errors.tpl"}
 	<p class="required"><sup>*</sup>{l s='Required field'}</p>
 	<form action="{$link->getPageLink('address', true)|escape:'html':'UTF-8'}" method="post" class="std" id="add_address">
 		<!--h3 class="page-subheading">{if isset($id_address)}{l s='Your address'}{else}{l s='New address'}{/if}</h3-->

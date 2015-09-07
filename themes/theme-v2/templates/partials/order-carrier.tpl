@@ -27,8 +27,8 @@
 	{assign var='current_step' value='shipping'}
 	<div id="carrier_area">
 		<h1 class="page-heading">{l s='Shipping:'}</h1>
-		{include file="$tpl_dir./order-steps.tpl"}
-		{include file="$tpl_dir./errors.tpl"}
+		{include file="partials/order-steps.tpl"}
+		{include file="partials/errors.tpl"}
 		<form id="form" action="{$link->getPageLink('order', true, NULL, "{if $multi_shipping}multi-shipping={$multi_shipping}{/if}")|escape:'html':'UTF-8'}" method="post" name="carrier_area">
 {else}
 	<div id="carrier_area" class="opc-main-block">

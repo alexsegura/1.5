@@ -108,15 +108,15 @@
 
     {if $opc}
         <!-- Carrier -->
-        {include file="$tpl_dir./order-carrier-advanced.tpl"}
+        {include file="partials/order-carrier-advanced.tpl"}
         <!-- END Carrier -->
     {/if}
 
     {if $is_logged AND !$is_guest}
-        {include file="$tpl_dir./order-address-advanced.tpl"}
+        {include file="partials/order-address-advanced.tpl"}
     {elseif $opc}
         <!-- Create account / Guest account / Login block -->
-        {include file="$tpl_dir./order-opc-new-account-advanced.tpl"}
+        {include file="partials/order-opc-new-account-advanced.tpl"}
         <!-- END Create account / Guest account / Login block -->
     {/if}
 
@@ -141,5 +141,5 @@
     {/if}
     <!-- end TNC -->
 
-    {include file="$tpl_dir./shopping-cart-advanced.tpl"}
+    {include file="partials/shopping-cart-advanced.tpl"}
 {/if}

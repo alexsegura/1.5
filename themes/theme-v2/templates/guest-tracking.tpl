@@ -55,14 +55,14 @@
 
 		<div id="block-history">
 			<div id="block-order-detail" class="std">
-			{include file="./order-detail.tpl"}
+			{include file="partials/order-detail.tpl"}
 			</div>
 		</div>
 	{/foreach}
 
 	<h2 id="guestToCustomer" class="page-heading">{l s='For more advantages...'}</h2>
 
-	{include file="$tpl_dir./errors.tpl"}
+	{include file="partials/errors.tpl"}
 
 	{if isset($transformSuccess)}
 		<p class="alert alert-success">{l s='Your guest account has been successfully transformed into a customer account. You can now log in as a registered shopper. '} <a href="{$link->getPageLink('authentication', true)|escape:'html':'UTF-8'}">{l s='Log in now.'}</a></p>
@@ -96,7 +96,7 @@
 		</form>
 	{/if}
 {else}
-	{include file="$tpl_dir./errors.tpl"}
+	{include file="partials/errors.tpl"}
 	{if isset($show_login_link) && $show_login_link}
 		<p><img src="{$img_dir}icon/userinfo.gif" alt="{l s='Information'}" class="icon" /><a href="{$link->getPageLink('my-account', true)|escape:'html':'UTF-8'}">{l s='Click here to log in to your customer account.'}</a><br /><br /></p>
 	{/if}
