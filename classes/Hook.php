@@ -58,6 +58,8 @@ class HookCore extends ObjectModel
 
     public static $native_module;
 
+    private static $hookExecCache = array();
+
     /**
      * @see ObjectModel::$definition
      */
@@ -421,6 +423,9 @@ class HookCore extends ObjectModel
     public static function exec($hook_name, $hook_args = array(), $id_module = null, $array_return = false, $check_exceptions = true,
                                 $use_push = false, $id_shop = null)
     {
+        $logger = new FileLogger(AbstractLogger::DEBUG);
+        $logger->setFilename(_PS_ROOT_DIR_.'/log/hook.log');
+
         if (defined('PS_INSTALLATION_IN_PROGRESS')) {
             return;
         }
@@ -448,6 +453,21 @@ class HookCore extends ObjectModel
 
         // Store list of executed hooks on this page
         Hook::$executed_hooks[$id_hook] = $hook_name;
+
+        // TODO Manage live_edit & array_return
+        if (!self::hasNonStandardArgs($hook_args)) {
+            $moduleName = null;
+            if (null !== $id_module) {
+                $moduleInstance = Module::getInstanceById($id_module);
+                $moduleName = $moduleInstance->name;
+            }
+
+            if (Hook::isHookExecCached($hook_name, $moduleName)) {
+                $logger->logDebug($hook_name.' : returning cached output');
+
+                return Hook::getHookExecCache($hook_name, $moduleName);
+            }
+        }
 
         $live_edit = false;
         $context = Context::getContext();
@@ -544,6 +564,11 @@ class HookCore extends ObjectModel
                     $display = Hook::coreCallHook($moduleInstance, 'hook'.$retro_hook_name, $hook_args);
                 }
 
+                if (!self::hasNonStandardArgs($hook_args) && Hook::isDisplayHook($hook_name)) {
+                    $logger->logDebug($hook_name.' : caching '.$moduleInstance->name.' output');
+                    Hook::cacheHookExec($hook_name, $moduleInstance->name, $display);
+                }
+
                 // Live edit
                 if (!$array_return && $array['live_edit'] && Tools::isSubmit('live_edit') && Tools::getValue('ad')
                     && Tools::getValue('liveToken') == Tools::getAdminToken('AdminModulesPositions'
@@ -617,6 +642,91 @@ class HookCore extends ObjectModel
 				<a href="#" id="'.(int)$id_hook.'_'.(int)$moduleInstance->id.'" class="unregisterHook">
 					<img src="'._PS_ADMIN_IMG_.'delete.gif"></a></span>
 				</span>'.$display.'</div>';
+    }
+
+    public static function isHookExecCached($hookName, $moduleName = null)
+    {
+        $hookName = self::normalizeHookName($hookName);
+
+        if (!isset(self::$hookExecCache[$hookName])) {
+            return false;
+        }
+
+        if (null !== $moduleName) {
+            return isset(self::$hookExecCache[$hookName][$moduleName]);
+        }
+
+        return true;
+    }
+
+    public static function getHookExecCache($hookName, $moduleName = null)
+    {
+        $hookName = self::normalizeHookName($hookName);
+
+        if (!Hook::isHookExecCached($hookName, $moduleName)) {
+            return '';
+        }
+
+        if (null !== $moduleName) {
+            return self::$hookExecCache[$hookName][$moduleName];
+        }
+
+        $output = '';
+        foreach (self::$hookExecCache[$hookName] as $moduleName => $moduleOutput) {
+            $output .= $moduleOutput;
+        }
+
+        return $output;
+    }
+
+    public static function cacheHookExec($hookName, $moduleName, &$output)
+    {
+        $hookName = self::normalizeHookName($hookName);
+        self::$hookExecCache[$hookName][$moduleName] = $output;
+    }
+
+    private static function hasNonStandardArgs(array $hookArgs)
+    {
+        $standardArgs = array(
+            'smarty',
+            'cookie',
+            'cart',
+            'altern',
+        );
+
+        foreach (array_keys($hookArgs) as $argName) {
+            if (!in_array($argName, $standardArgs)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static function normalizeHookName($hookName)
+    {
+        // FIXME Is it a bug ?
+        if (strtolower($hookName) == 'displayheader') {
+            return 'displayHeader';
+        }
+
+        $hookAliasList = Hook::getHookAliasList();
+
+        if (isset($hookAliasList[strtolower($hookName)])) {
+            return $hookAliasList[strtolower($hookName)];
+        }
+
+        return $hookName;
+    }
+
+    public static function isActionHook($hookName)
+    {
+        return 0 === strpos(Hook::normalizeHookName($hookName), 'action');
+    }
+
+    public static function isDisplayHook($hookName)
+    {
+        return 0 === strpos(Hook::normalizeHookName($hookName), 'display');
     }
 
     /**
